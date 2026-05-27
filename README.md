@@ -23,10 +23,6 @@ Estos son los resultados que nos ofrece Lighthouse en el apartado de ordenador, 
 
 <img width="901" height="835" alt="image" src="https://github.com/user-attachments/assets/6a770876-eb6d-4b42-aa91-b2332936cb4a" />
 
-### Identificación de Bloatware.
-
-### Análisis.
-
 ## **Fase 2: Dimensión Social y Equidad (S).**
 
 ### Test de Accesibilidad.
