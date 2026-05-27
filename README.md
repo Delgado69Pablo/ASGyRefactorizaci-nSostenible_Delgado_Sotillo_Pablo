@@ -75,6 +75,49 @@ Para evitarlo, se propone cachear resultados para reducir cálculos repetidos, o
 También es clave monitorizar el consumo energético real y ajustar la arquitectura para que el crecimiento del tráfico no anule los beneficios ambientales obtenidos.
 
 # 2. Refactorización. Propuesta.
+A continuación se presenta una propuesta de mejora estructurada basada en los principios de Green Software Engineering y en los resultados de la auditoría ASG realizada sobre compramostucoche.es.
+
+### Posibles mejoras ambientales (A)
+
+**Optimización de imágenes (WebP, AVIF y compresión).**  
+Sustituir JPG/PNG por formatos modernos que reducen entre un 30% y un 60% el peso total. Aplicar compresión adicional y servir imágenes adaptadas al tamaño real del dispositivo.
+
+**Reducción de peticiones HTTP.**  
+Unificar archivos CSS/JS, eliminar recursos duplicados y minimizar dependencias externas para disminuir el número de solicitudes al servidor.
+
+**Implementación de Lazy Loading.**  
+Cargar imágenes y componentes no críticos solo cuando entren en el viewport, reduciendo el consumo energético y mejorando el LCP.
+
+**Eliminación de código no utilizado.**  
+Aplicar técnicas como *tree shaking*, *purge CSS* y revisión manual para eliminar estilos, scripts y componentes que no aportan funcionalidad.
+
+### Posibles mejoras sociales (S)
+
+**Uso de HTML semántico.**  
+Incorporar etiquetas como <header>, <nav>, <main>, <section> y <footer> para mejorar la accesibilidad y la comprensión por parte de lectores de pantalla.
+
+**Inclusión de atributos alt en imágenes.**  
+Añadir descripciones significativas en todas las imágenes relevantes para garantizar el acceso a personas con discapacidad visual.
+
+**Mejora del contraste.**  
+Ajustar la paleta de colores para cumplir con WCAG 2.2 (ratio mínimo 4.5:1), especialmente en botones, textos superpuestos y elementos interactivos.
+
+**Navegación accesible.**  
+Asegurar que todos los elementos sean navegables mediante teclado, incluir *focus states* visibles y mejorar la estructura de encabezados.
+
+### Posibles mejoras de gobernanza (G)
+
+**Consentimiento de cookies transparente.**  
+Incluir un botón de “Rechazar todo” visible en el primer nivel del banner, igualar el estilo visual de las opciones y evitar patrones oscuros que dificulten la elección informada.
+
+**Simplificación de textos legales.**  
+Redactar políticas de privacidad y cookies en lenguaje claro, conciso y comprensible, indicando qué datos se recogen y con qué finalidad.
+
+**Eliminación de prácticas engañosas.**  
+Evitar patrones oscuros como el *forced data disclosure*, donde se obliga al usuario a entregar datos personales antes de acceder a la información.
+
+**Mejora de la privacidad.**  
+Aplicar el principio de minimización de datos del RGPD, solicitando únicamente la información estrictamente necesaria y ofreciendo alternativas sin registro cuando sea posible.
 
 
 
