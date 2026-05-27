@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Tasación online de tu coche | CompramosTuCoche</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Tasa tu coche online y vende de forma rápida, segura y transparente." />
+
+  <!-- CSS crítico en línea (minimizado) -->
+  <style>
+    :root {
+      --color-primary: #0052cc;
+      --color-secondary: #ff7a00;
+      --color-bg: #ffffff;
+      --color-text: #222222;
+      --color-text-muted: #666666;
+      --color-focus: #ffbf47;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-main);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+    a { color: var(--color-primary); text-decoration: none; }
+    a:focus, button:focus, input:focus, select:focus {
+      outline: 3px solid var(--color-focus);
+      outline-offset: 2px;
+    }
+    header, main, footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .logo img {
+      width: 40px;
+      height: 40px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 2rem;
+      padding-block: 2rem;
+    }
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+    .hero-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin-bottom: .5rem;
+    }
+    .hero-subtitle {
+      color: var(--color-text-muted);
+      margin-bottom: 1rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .25rem .6rem;
+      border-radius: 999px;
+      background: #e6f0ff;
+      color: #003a99;
+      font-size: .85rem;
+    }
+    .form-card {
+      border-radius: .75rem;
+      border: 1px solid #e0e0e0;
+      padding: 1.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,.04);
+      background: #ffffff;
+    }
+    .form-card h2 {
+      margin-top: 0;
+      margin-bottom: .75rem;
+      font-size: 1.3rem;
+    }
+    .field {
+      margin-bottom: 1rem;
+    }
+    .field label {
+      display: block;
+      font-size: .9rem;
+      margin-bottom: .25rem;
+    }
+    .field select,
+    .field input {
+      width: 100%;
+      padding: .5rem .6rem;
+      border-radius: .4rem;
+      border: 1px solid #cccccc;
+      font: inherit;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+      padding: .7rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--color-primary);
+      color: #ffffff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: #003a99;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding-block: 2rem;
+    }
+    .step {
+      border-radius: .75rem;
+      border: 1px solid #e0e0e0;
+      padding: 1rem;
+      background: #fafafa;
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-secondary);
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      padding-block: 1.5rem;
+    }
+    .stat {
+      min-width: 140px;
+    }
+    .stat-value {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .stat-label {
+      font-size: .9rem;
+      color: var(--color-text-muted);
+    }
+    .faq {
+      padding-block: 2rem;
+    }
+    details {
+      border-radius: .5rem;
+      border: 1px solid #e0e0e0;
+      padding: .75rem 1rem;
+      margin-bottom: .75rem;
+      background: #ffffff;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+    footer {
+      border-top: 1px solid #e0e0e0;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      font-size: .85rem;
+      color: var(--color-text-muted);
+    }
+    footer nav ul {
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+    /* Banner de cookies accesible */
+    .cookie-banner {
+      position: fixed;
+      inset-inline: 0;
+      bottom: 0;
+      z-index: 1000;
+      background: #111827;
+      color: #f9fafb;
+      padding: 1rem;
+      box-shadow: 0 -4px 16px rgba(0,0,0,.35);
+    }
+    .cookie-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cookie-text {
+      flex: 1 1 220px;
+      font-size: .9rem;
+    }
+    .cookie-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .btn-ghost,
+    .btn-secondary {
+      border-radius: 999px;
+      padding: .5rem 1rem;
+      font-size: .9rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #f9fafb;
+    }
+    .btn-secondary {
+      background: #f9fafb;
+      color: #111827;
+    }
+    .btn-ghost {
+      border-color: #4b5563;
+    }
+  </style>
+
+  <!-- Carga diferida de JS no crítico -->
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <!-- Enlace de salto para accesibilidad -->
+  <a href="#contenido-principal" class="sr-only">Saltar al contenido principal</a>
+
+  <!-- Banner de cookies (Gobernanza + accesibilidad) -->
+  <section class="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-title" id="cookie-banner">
+    <div class="cookie-inner">
+      <div class="cookie-text">
+        <h2 id="cookie-title" style="margin:0 0 .25rem;font-size:1rem;">Tu privacidad nos importa</h2>
+        <p style="margin:0;">
+          Usamos cookies para mejorar tu experiencia y analizar el uso del sitio. Puedes aceptar solo las esenciales
+          o personalizar tu elección. Más información en nuestra
+          <a href="#politica-privacidad" style="color:#93c5fd; text-decoration:underline;">Política de privacidad</a>.
+        </p>
+      </div>
+      <div class="cookie-actions" aria-label="Opciones de cookies">
+        <button class="btn-ghost" type="button" data-cookie-action="reject">Rechazar no esenciales</button>
+        <button class="btn-ghost" type="button" data-cookie-action="customize">Configurar</button>
+        <button class="btn-secondary" type="button" data-cookie-action="accept">Aceptar todas</button>
+      </div>
+    </div>
+  </section>
+
+  <header>
+    <div class="logo">
+      <img src="img/logo.webp" alt="Logotipo de CompramosTuCoche" loading="lazy" width="40" height="40" />
+      <span>CompramosTuCoche</span>
+    </div>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="#como-funciona">Cómo funciona</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#faq">Preguntas frecuentes</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido-principal">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="badge">
+          <span aria-hidden="true">★</span>
+          Más de 1M de coches tasados
+        </p>
+        <h1 id="hero-title" class="hero-title">
+          Tasa tu coche online en menos de 2 minutos
+        </h1>
+        <p class="hero-subtitle">
+          Recibe una oferta transparente, sin compromiso y con pago seguro. Sin letra pequeña ni sorpresas.
+        </p>
+        <div class="stats" aria-label="Datos destacados del servicio">
+          <div class="stat">
+            <div class="stat-value">+1M</div>
+            <div class="stat-label">Coches tasados</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">48h</div>
+            <div class="stat-label">Pago máximo tras la venta</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">4,7/5</div>
+            <div class="stat-label">Valoración media de clientes</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulario accesible y semántico -->
+      <section class="form-card" aria-label="Formulario de tasación de coche">
+        <h2>Empieza la tasación de tu coche</h2>
+        <form id="form-tasacion" novalidate>
+          <div class="field">
+            <label for="marca">Marca</label>
+            <select id="marca" name="marca" required>
+              <option value="">Selecciona una marca</option>
+              <option value="seat">SEAT</option>
+              <option value="renault">Renault</option>
+              <option value="ford">Ford</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="modelo">Modelo</label>
+            <select id="modelo" name="modelo" required disabled>
+              <option value="">Selecciona primero una marca</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="anio">Año de matriculación</label>
+            <input id="anio" name="anio" type="number" min="1980" max="2025" required
+                   inputmode="numeric" placeholder="Ej. 2018" />
+          </div>
+          <button class="btn-primary" type="submit">
+            Ver oferta aproximada
+            <span aria-hidden="true">→</span>
+          </button>
+          <p style="font-size:.8rem;color:var(--color-text-muted);margin-top:.5rem;">
+            La oferta final se confirmará tras una revisión presencial del vehículo.
+          </p>
+        </form>
+      </section>
+    </section>
+
+    <!-- Cómo funciona -->
+    <section id="como-funciona" class="steps" aria-labelledby="como-funciona-titulo">
+      <h2 id="como-funciona-titulo" style="grid-column:1/-1;">Cómo funciona</h2>
+
+      <article class="step">
+        <div class="step-number" aria-hidden="true">1</div>
+        <h3>Tasa tu coche online</h3>
+        <p>Introduce los datos básicos de tu vehículo y obtén una estimación inmediata.</p>
+      </article>
+
+      <article class="step">
+        <div class="step-number" aria-hidden="true">2</div>
+        <h3>Confirma una cita</h3>
+        <p>Elige el centro más cercano para revisar el coche y confirmar la oferta.</p>
+      </article>
+
+      <article class="step">
+        <div class="step-number" aria-hidden="true">3</div>
+        <h3>Vende y cobra</h3>
+        <p>Si aceptas la oferta, firmamos el contrato y recibes el pago de forma segura.</p>
+      </article>
+    </section>
+
+    <!-- Opiniones (imagen optimizada y lazy) -->
+    <section id="opiniones" aria-labelledby="opiniones-titulo">
+      <h2 id="opiniones-titulo">Opiniones de clientes</h2>
+      <p>Valoración media basada en reseñas verificadas.</p>
+      <img
+        src="img/opiniones-placeholder.webp"
+        alt="Captura de valoraciones positivas de clientes"
+        loading="lazy"
+        width="640"
+        height="320"
+      />
+    </section>
+
+    <!-- FAQ accesible -->
+    <section id="faq" class="faq" aria-labelledby="faq-titulo">
+      <h2 id="faq-titulo">Preguntas frecuentes</h2>
+
+      <details>
+        <summary>¿La tasación online es vinculante?</summary>
+        <p>No, es una estimación. La oferta final se confirma tras revisar el coche en persona.</p>
+      </details>
+
+      <details>
+        <summary>¿Tiene algún coste el proceso?</summary>
+        <p>No, la tasación y la cita son totalmente gratuitas y sin compromiso.</p>
+      </details>
+
+      <details>
+        <summary>¿Qué documentación necesito?</summary>
+        <p>Necesitarás DNI, permiso de circulación y ficha técnica del vehículo.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <nav aria-label="Enlaces legales">
+      <ul>
+        <li><a href="#aviso-legal">Aviso legal</a></li>
+        <li><a href="#politica-privacidad" id="politica-privacidad">Política de privacidad</a></li>
+        <li><a href="#politica-cookies">Política de cookies</a></li>
+      </ul>
+    </nav>
+    <p style="margin-top:.75rem;">
+      © 2026 CompramosTuCoche. Todos los derechos reservados.
+    </p>
+  </footer>
+</body>
+</html>
