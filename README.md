@@ -65,7 +65,7 @@ Finalmente, la minificación de CSS/JS y la compresión Brotli permiten entregar
 
 La web carga varias librerías externas que incrementan el tiempo de bloqueo y el uso de CPU. Se recomienda eliminar dependencias pesadas como **jQuery** y sustituirlas por JavaScript nativo, así como reemplazar **Bootstrap completo** por CSS modular.  
 Las **Google Fonts** deben sustituirse por *system fonts* para evitar peticiones externas.  
-Los scripts no esenciales deben cargarse con `defer` o `async`, y los módulos opcionales (mapas, sliders, formularios avanzados) deben cargarse solo cuando el usuario los necesite.  
+Los scripts no esenciales deben cargarse con defer o async, y los módulos opcionales (mapas, sliders, formularios avanzados) deben cargarse solo cuando el usuario los necesite.  
 Estas acciones reducen el número de solicitudes y mejoran la eficiencia en dispositivos de gama baja.
 
 ### Reflexión sobre la Paradoja de Jevons
