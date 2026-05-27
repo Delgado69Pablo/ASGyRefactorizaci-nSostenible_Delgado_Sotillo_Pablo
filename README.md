@@ -78,7 +78,7 @@ Optimizar la web hará que cargue más rápido y atraiga más usuarios, lo que p
 Para evitarlo, se propone cachear resultados para reducir cálculos repetidos, optimizar el backend para minimizar el uso de CPU por petición y utilizar proveedores cloud con **energía renovable**.  
 También es clave monitorizar el consumo energético real y ajustar la arquitectura para que el crecimiento del tráfico no anule los beneficios ambientales obtenidos.
 
-
+# 2. Refactorización. Propuesta.
 
 
 
