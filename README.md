@@ -1,5 +1,7 @@
 # ASGyRefactorizacionSostenible_Delgado_Sotillo_Pablo
 
+# 1. Instrucciones y Fases de la Auditoría
+
 ## Fase 1: Inventario y Dimensión Ambiental
 
 ### Medición inicial.
